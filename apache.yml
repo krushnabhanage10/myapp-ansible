@@ -12,13 +12,21 @@
         name: "apache2"
         state: "present"
       when: ansible_distribution == "Ubuntu"
+    - name: Deploy static website
+      copy:
+        src: index.html
+        dest: /var/www/html/
+    - name: Start Apache server
+      service:
+        name: apache
+        state: started
+        enabled: True
+      when: ansible_distribution == "Ubuntu"
     - name: Start Apache server
       service:
         name: httpd
         state: started
         enabled: True
-    - name: Deploy static website
-      copy:
-        src: index.html
-        dest: /var/www/html/
+      when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+
 ...
