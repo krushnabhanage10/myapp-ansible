@@ -6,11 +6,13 @@
       yum:
         name: "httpd"
         state: "present"
+      when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
     - name: Start Apache server
       service:
         name: httpd
         state: started
         enabled: True
+      when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
     - name: Deploy static website
       copy:
         src: index.html
