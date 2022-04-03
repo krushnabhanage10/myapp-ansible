@@ -11,7 +11,7 @@
       apt:
         name: "apache"
         state: "present"
-      when: when: ansible_distribution == "Ubuntu"
+      when: ansible_distribution == "Ubuntu"
     - name: Start Apache server
       service:
         name: httpd
