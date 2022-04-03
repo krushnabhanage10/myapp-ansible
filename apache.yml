@@ -9,7 +9,7 @@
       when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
     - name: Install packages
       apt:
-        name: "apache"
+        name: "apache2"
         state: "present"
       when: ansible_distribution == "Ubuntu"
     - name: Start Apache server
